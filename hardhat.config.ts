@@ -7,7 +7,7 @@ import { HARDHAT_NETWORK_MNEMONIC } from 'hardhat/internal/core/config/default-c
 import { main as deploy } from './tasks/deploy'
 import { SolcUserConfig } from "hardhat/types";
 
-const { MNEMONIC } = process.env
+const { MNEMONIC, ETHERSCAN_API_KEY } = process.env
 
 task('deploy', 'deploy GigaCommunis contract')
   .setAction(deploy)
@@ -29,16 +29,16 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: 'https://eth.merkle.io',
-        blockNumber: 18286243,
+        url: 'https://rpc.ankr.com/eth',
+        blockNumber: 18625002,
       },
       accounts: {
-        mnemonic: HARDHAT_NETWORK_MNEMONIC,
+        mnemonic: MNEMONIC,
       },
     },
     // only planning on deploying to 1 network for now
     external: {
-      url: 'https://eth.merkle.io',
+      url: 'https://rpc.ankr.com/eth',
       accounts: {
         mnemonic: MNEMONIC || HARDHAT_NETWORK_MNEMONIC,
       },
@@ -47,6 +47,22 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: './artifacts/types',
     target: 'ethers-v6',
+  },
+  sourcify: {
+    enabled: true,
+  },
+  etherscan: {
+    apiKey: {
+      external: ETHERSCAN_API_KEY as string,
+    },
+    customChains: [{
+      network: 'external',
+      chainId: 1,
+      urls: {
+        apiURL: 'https://api.etherscan.io/api',
+        browserURL: 'https://etherscan.io/',
+      },
+    }],
   },
 };
 

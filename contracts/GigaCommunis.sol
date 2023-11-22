@@ -8,6 +8,9 @@ import { Multicall } from "@openzeppelin/contracts/utils/Multicall.sol";
 contract GigaCommunis is ERC20, Multicall {
     address constant public COMM = 0x5A9780Bfe63f3ec57f01b087cD65BD656C9034A8;
     uint256 constant public GIGA = 1000**3; // giga (should be 1024**3 but this is easier for humans)
+    function decimals() public pure override returns(uint8) {
+        return 12;
+    }
     constructor() ERC20("Giga Communis", "gCOMM") {}
     /**
      * burn a number of tokens and transfer said tokens out of this contract
