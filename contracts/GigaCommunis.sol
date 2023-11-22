@@ -111,7 +111,9 @@ contract GigaCommunis is ERC20, Multicall {
             target: target
         });
         amount = amount == 0 || amount > limit ? limit : amount;
-        ERC20(target).transfer(to, amount);
+        if (amount > 0) {
+            ERC20(target).transfer(to, amount);
+        }
     }
     /**
      * exposes the _excess method to check the amount of balance available for trimming
