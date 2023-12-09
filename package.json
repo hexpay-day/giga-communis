@@ -20,6 +20,9 @@
     "typechain": "^8.3.2",
     "typescript": "^5.3.2"
   },
+  "files": [
+    "artifacts"
+  ],
   "scripts": {
     "compile": "hardhat compile && tsc"
   },
