@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-project",
+  "name": "@hexpayday/gigacommunis",
   "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
