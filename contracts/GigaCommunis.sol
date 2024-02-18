@@ -11,7 +11,7 @@ contract GigaCommunis is ERC20, Multicall {
     function decimals() public pure override returns(uint8) {
         return 12;
     }
-    constructor() ERC20("Giga Communis", "gCOMM") {}
+    constructor() ERC20("Giga Communis", "gCOM") {}
     /**
      * burn a number of tokens and transfer said tokens out of this contract
      * @param payer the account that will pay for the tokens
